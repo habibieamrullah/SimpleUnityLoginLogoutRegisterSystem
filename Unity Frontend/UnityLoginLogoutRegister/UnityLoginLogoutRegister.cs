@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class UnityLoginLogoutRegister : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class UnityLoginLogoutRegister : MonoBehaviour
 				currentUsername = PlayerPrefs.GetString(ukey);
 				info.text = "You are loged in = " + currentUsername;
 			}else{
-				info.text = "You are not loged in.";
+				info.text = "You are not logged in.";
 			}
 		}else{
 			info.text = "You are not loged in.";
@@ -103,7 +104,8 @@ public class UnityLoginLogoutRegister : MonoBehaviour
                 string responseText = www.downloadHandler.text;
 				if(responseText == "1"){
 					PlayerPrefs.SetString(ukey, uName);
-					info.text = "Login Success with username " + uName;
+					//info.text = "Login Success with username " + uName;
+					SceneManager.LoadSceneAsync("Home");
 				}else{
 					info.text = "Login Failed.";
 				}
